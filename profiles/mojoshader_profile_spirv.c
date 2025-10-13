@@ -3683,6 +3683,12 @@ void emit_SPIRV_TEXLD(Context *ctx)
         {
             if ((TextureType) sampler_reg->index == TEXTURE_TYPE_CUBE)
                 fail(ctx, "TEXLDP on a cubemap");  // !!! FIXME: is this legal?
+            else if ((TextureType) sampler_reg->index == TEXTURE_TYPE_2D)
+            {
+                // Need to move w to z, z can be discarded entirely
+                uint32 vec3_tid = spv_get_type(ctx, STI_VEC3);
+                texcoord = spv_emit_swizzle(ctx, texcoord, vec3_tid, (0 << 0) | (1 << 2) | (3 << 4), 0x7);
+            }
             opcode = SpvOpImageSampleProjImplicitLod;
         } // if
         else
