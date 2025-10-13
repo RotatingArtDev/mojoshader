@@ -1703,13 +1703,13 @@ void emit_HLSL_TEXLD(Context *ctx)
             return;
         } // if
 
-	const char *projsep = "";
-	char proj[64] = { '\0' };
-	if (ctx->instruction_controls == CONTROL_TEXLDP)
-	{
+        const char *projsep = "";
+        char proj[64] = { '\0' };
+        if (ctx->instruction_controls == CONTROL_TEXLDP)
+        {
             projsep = " / ";
             make_HLSL_srcarg_string_w(ctx, 0, proj, sizeof (proj));
-	} // if
+        } // if
 
         // !!! FIXME: does the d3d bias value map directly to HLSL?
         const char *biassep = "";
