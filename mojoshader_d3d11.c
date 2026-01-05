@@ -38,7 +38,7 @@
 #if defined(__APPLE__)
 #define LOAD_D3DCOMPILER dlopen("libvkd3d-utils.1.dylib", RTLD_NOW|RTLD_LOCAL)
 #else
-#define LOAD_D3DCOMPILER dlopen("libvkd3d-utils.so.1", RTLD_NOW|RTLD_LOCAL)
+#define LOAD_D3DCOMPILER dlopen("libvkd3d-utils.so", RTLD_NOW|RTLD_LOCAL)
 #endif
 #define UNLOAD_D3DCOMPILER(d) dlclose(d)
 #define LOAD_D3DCOMPILE(d) dlsym(d, "D3DCompile")
