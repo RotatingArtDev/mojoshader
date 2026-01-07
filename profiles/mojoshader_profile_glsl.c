@@ -552,10 +552,8 @@ void emit_GLSL_start(Context *ctx, const char *profilestr)
         output_line(ctx, "#define texture2DRect texture");
         output_line(ctx, "#define texture2DRectProj textureProj");
         output_line(ctx, "#define texture2DRectLod textureLod");
-        if (shader_is_vertex(ctx))
-            output_line(ctx, "precision highp float;");
-        else
-            output_line(ctx, "precision mediump float;");
+        // highp float for all shaders
+        output_line(ctx, "precision highp float;");
         output_line(ctx, "precision mediump int;");
         pop_output(ctx);
     } // else if
@@ -567,10 +565,8 @@ void emit_GLSL_start(Context *ctx, const char *profilestr)
         ctx->profile_supports_glsles = 1;
         push_output(ctx, &ctx->preflight);
         output_line(ctx, "#version 100");
-        if (shader_is_vertex(ctx))
-            output_line(ctx, "precision highp float;");
-        else
-            output_line(ctx, "precision mediump float;");
+        // highp float for all shaders
+        output_line(ctx, "precision highp float;");
         output_line(ctx, "precision mediump int;");
         pop_output(ctx);
     } // else if
